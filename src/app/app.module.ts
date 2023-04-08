@@ -1,22 +1,27 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ButtonModule} from "primeng/button";
 import {MenubarModule} from "primeng/menubar";
-import { NavbarComponent } from './component/navbar/navbar.component';
-import { RocketListComponent } from './component/rocket-list/rocket-list.component';
+import {NavbarComponent} from './component/navbar/navbar.component';
+import {RocketListComponent} from './component/rocket-list/rocket-list.component';
 import {HttpClientModule} from "@angular/common/http";
 import {TableModule} from "primeng/table";
 import {CardModule} from "primeng/card";
-import { LaunchConfirmDialogComponent } from './component/rocket-list/launch-confirm-dialog/launch-confirm-dialog.component';
-import { CancelConfirmDialogComponent } from './component/rocket-list/cancel-confirm-dialog/cancel-confirm-dialog.component';
-import { AppRoutingModule } from './app-routing.module';
+import {
+  LaunchConfirmDialogComponent
+} from './component/rocket-list/launch-confirm-dialog/launch-confirm-dialog.component';
+import {
+  CancelConfirmDialogComponent
+} from './component/rocket-list/cancel-confirm-dialog/cancel-confirm-dialog.component';
+import {AppRoutingModule} from './app-routing.module';
 import {SkeletonModule} from "primeng/skeleton";
 import {ProgressSpinnerModule} from "primeng/progressspinner";
 import {ToastModule} from "primeng/toast";
 import {MessageService} from "primeng/api";
+import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -39,7 +44,11 @@ import {MessageService} from "primeng/api";
     ProgressSpinnerModule,
     ToastModule
   ],
-  providers: [MessageService],
+  providers: [
+    MessageService,
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
