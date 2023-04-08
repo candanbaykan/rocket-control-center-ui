@@ -1,0 +1,31 @@
+<p-card header="Weather Condition">
+  <div *ngIf="!isLoading">
+    <div>Time: {{weather?.time ?? "N/A"}}</div>
+    <div>Temperature: {{weather?.temperature?.toFixed(2) ?? "N/A"}}</div>
+    <div>Humidity: {{weather?.humidity?.toFixed(3) ?? "N/A"}}</div>
+    <div>Pressure: {{weather?.pressure?.toFixed(3) ?? "N/A"}}</div>
+    <div>
+      Precipitation: {{weather?.precipitation?.probability?.toFixed(2) ?? "N/A"}}
+      <span class="mx-1" *ngIf="weather?.precipitation?.rain">Rain</span>
+      <span class="mx-1" *ngIf="weather?.precipitation?.snow">Snow</span>
+      <span class="mx-1" *ngIf="weather?.precipitation?.sleet">Sleet</span>
+      <span class="mx-1" *ngIf="weather?.precipitation?.hail">Hail</span>
+    </div>
+    <div>
+      <div>Wind Direction: {{weather?.wind?.direction ?? "N/A"}}</div>
+      <div>Wind Angle: {{weather?.wind?.angle?.toFixed(2) ?? "N/A"}}</div>
+      <div>Wind Speed: {{weather?.wind?.speed?.toFixed(2) ?? "N/A"}}</div>
+    </div>
+  </div>
+
+  <div *ngIf="isLoading" class="flex justify-content-center align-items-center">
+    <p-progressSpinner></p-progressSpinner>
+  </div>
+
+</p-card>
+
+<div class="flex flex-row justify-content-end mt-5">
+  <p-button class="mx-1" label="Accept" styleClass="p-button-success" (click)="accept()"></p-button>
+  <p-button class="mx-1" label="Decline" styleClass="p-button-danger" (click)="decline()"></p-button>
+</div>
+

@@ -1,0 +1,60 @@
+<p-table [value]="rockets" [tableStyle]="{ 'min-width': '50rem' }"
+         styleClass="p-datatable-striped p-datatable-gridlines" [rowHover]="true" [loading]="isLoading">
+  <ng-template pTemplate="header">
+    <tr>
+      <th rowspan="2">#</th>
+      <th rowspan="2">Model</th>
+      <th rowspan="2">Mass</th>
+      <th colspan="2">Payload</th>
+      <th rowspan="2">Status</th>
+      <th rowspan="2">Timestamps</th>
+      <th rowspan="2">Telemetry</th>
+      <th rowspan="2">Operation</th>
+    </tr>
+    <tr>
+      <th>Description</th>
+      <th>Weight</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rocket>
+    <tr>
+      <td>{{ rocket?.id }}</td>
+      <td>{{ rocket?.model }}</td>
+      <td style="text-align: end">{{ rocket?.mass }}</td>
+      <td>{{rocket?.payload?.description}}</td>
+      <td style="text-align: end">{{rocket?.payload?.weight}}</td>
+      <td>{{rocket?.status}}</td>
+      <td>
+        <div>Launched:</div>
+        <div>{{rocket?.timestamps?.launched ?? "N/A"}}</div>
+        <div>Deployed:</div>
+        <div>{{rocket?.timestamps?.deployed ?? "N/A"}}</div>
+        <div>Failed:</div>
+        <div>{{rocket?.timestamps?.failed ?? "N/A"}}</div>
+        <div>Cancelled:</div>
+        <div>{{rocket?.timestamps?.cancelled ?? "N/A"}}</div>
+      </td>
+      <td>
+        <div>Altitude: {{rocket?.altitude}}</div>
+        <div>Speed: {{rocket?.speed}}</div>
+        <div>Acceleration: {{rocket?.acceleration}}</div>
+        <div>Thrust: {{rocket?.thrust}}</div>
+        <div>Temperature: {{rocket?.temperature}}</div>
+      </td>
+      <td>
+        <p-button *ngIf="rocket?.status === 'waiting' || rocket?.status === 'cancelled'"
+                  label="Launch"
+                  styleClass="p-button-success"
+                  (mouseup)="launch(rocket)"
+        >
+        </p-button>
+        <p-button *ngIf="rocket?.status === 'launched'"
+                  label="Cancel"
+                  styleClass="p-button-danger"
+                  (mouseup)="cancel(rocket)"
+        >
+        </p-button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
