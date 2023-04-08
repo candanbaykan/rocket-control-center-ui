@@ -5,6 +5,7 @@
 1. Download rocket-control-center-ui.zip file from Release page.
 2. Extract the archive.
 3. Serve files inside rocket-control-center-ui directory via a Http server.
+
 Tip: If you have python installed on your system, you can run python -m http.server inside the directory. That will serve the files at localhost:8000.
 
 ## How to Build & Run from the Source Files
