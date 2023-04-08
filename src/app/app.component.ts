@@ -7,7 +7,6 @@ import {PrimeNGConfig} from "primeng/api";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'rocket-command-control-ui';
 
   constructor(
     private primengConfig: PrimeNGConfig

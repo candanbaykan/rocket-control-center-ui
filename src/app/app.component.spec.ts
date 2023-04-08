@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'rocket-command-control-ui'`, () => {
+  it(`should have as title 'rocket-control-center-ui'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('rocket-command-control-ui');
+    expect(app.title).toEqual('rocket-control-center-ui');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('rocket-command-control-ui app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('rocket-control-center-ui app is running!');
   });
 });
